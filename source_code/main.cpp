@@ -11,16 +11,17 @@
 int main(){
 
     //Window
-    sf::Window window(sf::VideoMode(640,400), "My first project", sf::Style::Default);
+    sf::RenderWindow window(sf::VideoMode(640,400), "My first project", sf::Style::Default);
     sf::Event ev;
-
+    sf::CircleShape circle(50.f);
+    circle.setFillColor(sf::Color::Green);
     while(window.isOpen()){
 
         //Event polling
         while(window.pollEvent(ev)){
             switch(ev.type){
                 case sf::Event::Closed:
-                   // window.close();
+                    window.close();
                     break;
                 case sf::Event::KeyPressed:
                     if(ev.key.code == sf::Keyboard::Escape)
@@ -28,17 +29,18 @@ int main(){
                     break;
             }
         }
+
+        window.clear(sf::Color::Blue);
+        window.draw(circle);
+        window.display();
     }
 
 
     //Update
 
 
-    //Render
-    //window.clear(sf::Color::Blue);
-
-    //Draw game
-    //window.display();
+   
+ 
 
     return 0;
 }
