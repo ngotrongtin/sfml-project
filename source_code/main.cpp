@@ -1,5 +1,5 @@
 #include<iostream>
-
+#include"../header_file/Game.h"
 #include<SFML/Graphics.hpp>
 #include<SFML/System.hpp>
 #include<SFML/Window.hpp>
@@ -9,38 +9,15 @@
 //using namespace sf;
 
 int main(){
+    // Init game
+    Game game;
+    // Game loop
+    while(game.running()){
+        //Update 
+        game.update();
 
-    //Window
-    sf::RenderWindow window(sf::VideoMode(640,400), "My first project", sf::Style::Default);
-    sf::Event ev;
-    sf::CircleShape circle(50.f);
-    circle.setFillColor(sf::Color::Green);
-    while(window.isOpen()){
-
-        //Event polling
-        while(window.pollEvent(ev)){
-            switch(ev.type){
-                case sf::Event::Closed:
-                    window.close();
-                    break;
-                case sf::Event::KeyPressed:
-                    if(ev.key.code == sf::Keyboard::Escape)
-                        window.close();
-                    break;
-            }
-        }
-
-        window.clear(sf::Color::Blue);
-        window.draw(circle);
-        window.display();
+        //Render
+        game.render();
     }
-
-
-    //Update
-
-
-   
- 
-
     return 0;
 }

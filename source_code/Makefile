@@ -1,22 +1,22 @@
 all: compile link
 
 compile:
+	g++ -c game.cpp -I"D:\System_setup\sfml\SFML-2.6.1\include"
 	g++ -c main.cpp -I"D:\System_setup\sfml\SFML-2.6.1\include"
 
 link:
-	g++ main.o -o main -L"D:\System_setup\sfml\SFML-2.6.1\lib" -lsfml-graphics -lsfml-window -lsfml-system
+	g++ main.o game.o -o game -L"D:\System_setup\sfml\SFML-2.6.1\lib" -lsfml-graphics -lsfml-window -lsfml-system
 clean:
-	del main.exe main.o
-
-
+	del main.exe main.o game.o
 
 
 test_all: test_compile test_link
 
 test_compile:
-	g++ -c test.cpp -I"D:\System_setup\sfml\SFML-2.6.1\include"
+	g++ -c wave.cpp -I"D:\System_setup\sfml\SFML-2.6.1\include"
 
 test_link:
-	g++ test.o -o test -L"D:\System_setup\sfml\SFML-2.6.1\lib" -lsfml-graphics -lsfml-window -lsfml-system
+	g++ wave.o -o wave -L"D:\System_setup\sfml\SFML-2.6.1\lib" -lsfml-graphics -lsfml-window -lsfml-system
 test_clean:
-	del test.exe test.o
+	del wave.exe wave.o 
+
