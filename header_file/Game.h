@@ -5,6 +5,9 @@
 #include<SFML/Audio.hpp>
 #include<SFML/Network.hpp>
 
+#include<vector>
+#include<ctime>
+
 // game core
 
 class Game{
@@ -13,14 +16,31 @@ private:
     /*
         Always delete the dynamic variable when use it
     */
+
+   // window
     sf::RenderWindow* window;
     sf::Event ev;
     sf::VideoMode videoMode;
 
+    // game objects
+    std::vector<sf::RectangleShape> enemies;
+    sf::RectangleShape enemy;
+
+    // mouse position
+    sf::Vector2i mousePosWindow;
+    sf::Vector2f mousePosView;
+
+    // game logic 
+    float enemySpawnTimer;
+    float enemySpawnTimerMax;
+    int maxEnemies;
+    unsigned points;
+    bool mouseHeld;
+    
     // private functions
     void initVariables();
     void initWindow();
-    
+    void initEnemies();
 public:
     // constructer // destructer
     Game();
@@ -31,7 +51,12 @@ public:
     */
     const bool running() const;
     // functions
-    void PollEvent();
-    void update();
-    void render();
+
+    void spawnEnemies();
+    void updateEnemies();
+    void renderEnemies();
+    void PollEvent();//check
+    void update();//check
+    void render();//check
+    void updateMousePostions();// check
 };
